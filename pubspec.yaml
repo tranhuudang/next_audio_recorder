@@ -1,6 +1,6 @@
 name: next_audio_recorder
-description: "This package is a versatile and user-friendly audio recording package for Dart and Flutter applications. Whether you're building a voice memo app, a language learning platform, or integrating audio recording features into your existing application, next_audio_recorder offers powerful functionality with simplicity in mind."
-version: 1.0.0
+description: "A versatile and user-friendly audio recording package for Dart and Flutter applications. Whether you're building a voice memo app, a language learning platform, or integrating audio recording features into your existing application, next_audio_recorder offers powerful functionality with simplicity in mind."
+version: 1.0.1
 homepage: https://github.com/tranhuudang/next_audio_recoder
 
 environment:
