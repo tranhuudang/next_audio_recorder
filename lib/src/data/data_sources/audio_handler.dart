@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:audio_session/audio_session.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound_platform_interface/flutter_sound_recorder_platform_interface.dart';
 import 'package:next_audio_recoder/src/common/constants/exception_strings.dart';
@@ -53,7 +54,7 @@ class AudioHandler {
         ),
       );
       _isInitialized = true;
-      print('Audio initialized');
+      debugPrint('Audio initialized');
       return true;
     } catch (e) {
       throw AudioHandlerException('${ExceptionStrings.initializingRecorder}$e');
@@ -67,7 +68,6 @@ class AudioHandler {
   StreamSubscription<dynamic>? startRecorderSubscriptions(
       Function(RecordingDisposition) onValueChanged) {
     _recorderSubscription = _mRecorder.onProgress!.listen((e) {
-      print("audio handler subbcription");
       onValueChanged(e);
       pos = e.duration.inMilliseconds;
       if (e.decibels != null) {
@@ -82,6 +82,7 @@ class AudioHandler {
     if (_recorderSubscription != null) {
       _recorderSubscription!.cancel();
       _recorderSubscription = null;
+      debugPrint('Audio subscriptions is canceled');
     }
   }
 
@@ -108,6 +109,7 @@ class AudioHandler {
         codec: _codec,
         audioSource: theSource,
       );
+      debugPrint('Recorder is started');
     } catch (e) {
       throw AudioHandlerException('${ExceptionStrings.startingRecorder}$e');
     }
@@ -119,6 +121,7 @@ class AudioHandler {
   /// A [String] representing the file path of the recorded audio.
   Future<String?> stopRecorder() async {
     try {
+      debugPrint('Recorder is stopped');
       return await _mRecorder.stopRecorder();
     } catch (e) {
       throw AudioHandlerException('${ExceptionStrings.stoppingRecorder}$e');

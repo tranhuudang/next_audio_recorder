@@ -1,7 +1,8 @@
-Here's a README.md file for your Next Audio Recorder Package:
-
-```markdown
 # Next Audio Recorder Package
+
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/tranhuudang/next_audio_recorder?style=flat&logo=github&colorB=green&label=stars)](https://github.com/tranhuudang/next_audio_recorder/stargazers)
+[![Pub Version](https://img.shields.io/pub/v/next_audio_recorder.svg)](https://pub.dev/packages/next_audio_recorder/)
 
 Next Audio Recorder is a Flutter package for recording audio with additional features like setting subscription duration.
 
@@ -92,6 +93,3 @@ We welcome contributions from the community. If you'd like to contribute, please
 ## License
 
 This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
-
-Feel free to adjust the README.md according to your package's specific details and requirements.
