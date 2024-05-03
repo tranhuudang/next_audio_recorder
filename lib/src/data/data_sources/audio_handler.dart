@@ -2,11 +2,8 @@ import 'dart:async';
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:flutter_sound_platform_interface/flutter_sound_recorder_platform_interface.dart';
 import 'package:next_audio_recorder/src/common/constants/exception_strings.dart';
 import 'package:next_audio_recorder/src/common/errors/exceptions.dart';
-
-const theSource = AudioSource.microphone;
 
 class AudioHandler {
   AudioHandler._privateConstructor();
@@ -107,7 +104,6 @@ class AudioHandler {
       await _mRecorder.startRecorder(
         toFile: targetFilePath,
         codec: _codec,
-        audioSource: theSource,
       );
       debugPrint('Recorder is started');
     } catch (e) {

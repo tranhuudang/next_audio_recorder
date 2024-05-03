@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:next_audio_recoder/next_audio_recorder.dart';
+import 'package:next_audio_recorder/next_audio_recorder.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() {
