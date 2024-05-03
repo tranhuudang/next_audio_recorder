@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter_sound/public/flutter_sound_recorder.dart';
-import 'package:next_audio_recoder/src/data/data_sources/audio_handler.dart';
+import 'package:next_audio_recorder/src/data/data_sources/audio_handler.dart';
 
 class NextAudioRecorder {
   final AudioHandler _audioHandler = AudioHandler.instance;
