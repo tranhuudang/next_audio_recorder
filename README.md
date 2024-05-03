@@ -60,7 +60,16 @@ startRecording() async {
   }
 }
 ```
+#### Auto stop recording when detect silent after user speaking
 
+```dart
+await _audioRecorder.startRecorderWithAutoStop(
+  silentDecibelThreshold: 42,
+  silentDurationSecond: 2,
+  targetFilePath: 'output.mp4',
+  onFinished: (outputFilePath) {
+  });
+```
 #### Stop Recording
 
 ```dart

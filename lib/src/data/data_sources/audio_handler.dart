@@ -9,10 +9,8 @@ class AudioHandler {
   AudioHandler._privateConstructor();
   bool _isInitialized = false;
   static final AudioHandler instance = AudioHandler._privateConstructor();
-
-  final FlutterSoundPlayer _mPlayer = FlutterSoundPlayer();
   final FlutterSoundRecorder _mRecorder = FlutterSoundRecorder();
-  double _mSubscriptionDuration = 300;
+  double subscriptionDuration = 300;
   StreamSubscription? _recorderSubscription;
   int pos = 0;
   double dbLevel = 0;
@@ -29,7 +27,6 @@ class AudioHandler {
   Future<bool> _initializeRecorder() async {
     try {
       await _mRecorder.openRecorder();
-      await _mPlayer.openPlayer();
       final session = await AudioSession.instance;
       await session.configure(
         AudioSessionConfiguration(
@@ -89,7 +86,7 @@ class AudioHandler {
   /// Parameters:
   /// - d: The duration (in milliseconds) for the audio recording subscription.
   Future<void> setSubscriptionDuration(double d) async {
-    _mSubscriptionDuration = d;
+    subscriptionDuration = d;
     await _mRecorder.setSubscriptionDuration(
       Duration(milliseconds: d.floor()),
     );
@@ -124,35 +121,10 @@ class AudioHandler {
     }
   }
 
-  /// Starts playing audio from the provided URI and triggers a function on finish.
-  ///
-  /// Parameters:
-  /// - fromURI: The URI or file path from where the audio playback will start.
-  /// - onFinish: Callback function triggered upon completion of audio playback.
-  void startPlayer(String fromURI, Function()? onFinish) {
-    try {
-      _mPlayer.startPlayer(fromURI: fromURI, whenFinished: onFinish);
-    } catch (e) {
-      throw AudioHandlerException('${ExceptionStrings.startingPlayer}$e');
-    }
-  }
-
-  /// Stops the audio player.
-  void stopPlayer() {
-    try {
-      _mPlayer.stopPlayer();
-    } catch (e) {
-      throw AudioHandlerException('${ExceptionStrings.stoppingPlayer}$e');
-    }
-  }
-
   /// Disposes of resources used for audio handling.
   void dispose() {
     _isInitialized = false;
     try {
-      _mPlayer.closePlayer();
-      //_mPlayer = null;
-
       _mRecorder.closeRecorder();
       //_mRecorder = null;
 
